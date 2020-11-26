@@ -1,0 +1,22 @@
+body {margin:0; height:100%; background-color:transparent; width:100%; text-align:center;}
+.responsive {
+	height: auto;
+	width: 100%;
+  margin:0 auto;
+}
+.desktop-banner{
+  cursor: pointer;
+	display: none;
+}
+.mobile-banner{
+  cursor: pointer;
+	display: block;
+}
+@media only screen and (min-width: 414px) {
+    .desktop-banner {
+        display: block;
+    }
+    .mobile-banner{
+    	display: none;
+    }
+}
