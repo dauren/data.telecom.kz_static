@@ -6,7 +6,7 @@ document.onreadystatechange = function () {
         loaded_message = {
             "event": "loaded",
             "customer_account_id": customer_account_id,
-            "product_offer_ids": ['22623'],
+            "product_offer_ids": [product_offer_id],
             "utm":{
                     "source":"bigdata-banner-telecomkz",
                     "medium": "display",
@@ -21,7 +21,7 @@ document.onreadystatechange = function () {
             clicked_message = {
                 "event": "clicked",
                 "customer_account_id": customer_account_id,
-                "product_offer_id": '22623',
+                "product_offer_id": product_offer_id,
                 "utm":
                     {
                         "source":"bigdata-banner-telecomkz",
