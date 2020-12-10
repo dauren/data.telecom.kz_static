@@ -1,17 +1,9 @@
-function postAppMessage(msg, origin) {
+ffunction postAppMessage(msg, origin) {
+    parent.postMessage(msg, origin);
     if (window.webkit != undefined) {
         if (window.webkit.messageHandlers.parent != undefined) {
             window.webkit.messageHandlers.parent.postMessage(msg, origin);
         }
-        else{
-            parent.postMessage(msg, origin);
-        }
-    }
-    else if (window.parent != undefined) {
-        window.parent.postMessage(msg, origin);
-    }
-    else{
-        parent.postMessage(msg, origin);
     }
 }
 document.onreadystatechange = function () {
