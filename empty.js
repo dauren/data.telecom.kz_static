@@ -1,17 +1,17 @@
-function postAppMessage(msg) {
+function postAppMessage(msg, origin) {
     if (window.webkit != undefined) {
         if (window.webkit.messageHandlers.parent != undefined) {
-            window.webkit.messageHandlers.parent.postMessage(msg);
+            window.webkit.messageHandlers.parent.postMessage(msg, origin);
         }
         else{
-            parent.postMessage(msg);
+            parent.postMessage(msg, origin);
         }
     }
     else if (window.parent != undefined) {
-        window.parent.postMessage(msg);
+        window.parent.postMessage(msg, origin);
     }
     else{
-        parent.postMessage(msg);
+        parent.postMessage(msg, origin);
     }
 }
 document.onreadystatechange = function () {
