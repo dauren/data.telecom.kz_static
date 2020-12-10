@@ -1,3 +1,14 @@
+function postAppMessage(msg) {
+    if (window.webkit != undefined) {
+        if (window.webkit.messageHandlers.appInterface != undefined) {
+            window.webkit.messageHandlers.appInterface.postMessage(msg);
+        }
+    }
+    if (window.appInterface != undefined) {
+        window.appInterface.postMessage(msg);
+    }
+    parent.postMessage(msg);
+}
 document.onreadystatechange = function () {
     if (document.readyState == "interactive") {
 		loaded_message = {
@@ -10,7 +21,7 @@ document.onreadystatechange = function () {
 					"campaign": 'empty'
 			}
 		}
-		parent.postMessage(JSON.stringify(loaded_message), "*");
+		postAppMessage(JSON.stringify(loaded_message), "*");
     }
 };
 

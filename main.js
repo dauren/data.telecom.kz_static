@@ -1,3 +1,14 @@
+function postAppMessage(msg) {
+    if (window.webkit != undefined) {
+        if (window.webkit.messageHandlers.appInterface != undefined) {
+            window.webkit.messageHandlers.appInterface.postMessage(msg);
+        }
+    }
+    if (window.appInterface != undefined) {
+        window.appInterface.postMessage(msg);
+    }
+    parent.postMessage(msg);
+}
 document.onreadystatechange = function () {
     if (document.readyState == "interactive") {
         var customer_account_id = document.body.getAttribute('data-id');
@@ -14,7 +25,7 @@ document.onreadystatechange = function () {
             }
         }
         ym(68971321,'reachGoal','banner_loaded');
-        parent.postMessage(JSON.stringify(loaded_message), "*");
+        postAppMessage(JSON.stringify(loaded_message), "*");
         var imgs = document.querySelectorAll("img")
         for (i = 0; i < imgs.length; i++) {
           imgs[i].addEventListener('click', function() {
@@ -29,7 +40,7 @@ document.onreadystatechange = function () {
                         "campaign": campaign
                     }
             }
-            parent.postMessage(JSON.stringify(clicked_message), "*");
+            postAppMessage(JSON.stringify(clicked_message), "*");
             ym(68971321,'reachGoal','banner_clicked');
           });
         }
