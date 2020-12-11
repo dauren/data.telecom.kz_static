@@ -1,4 +1,4 @@
-ffunction postAppMessage(msg, origin) {
+function postAppMessage(msg, origin) {
     parent.postMessage(msg, origin);
     if (window.webkit != undefined) {
         if (window.webkit.messageHandlers.parent != undefined) {
