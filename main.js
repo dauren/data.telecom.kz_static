@@ -1,3 +1,12 @@
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 function postAppMessage(msg, origin) {
     parent.postMessage(msg, origin);
     if (window.webkit != undefined) {
@@ -8,6 +17,13 @@ function postAppMessage(msg, origin) {
 }
 document.onreadystatechange = function () {
     if (document.readyState == "interactive") {
+        var url = window.location.href;
+        if (url.includes("mas-dev")){
+            var meta = document.createElement('meta');
+            meta.httpEquiv = "refresh";
+            meta.content = "30";
+            document.getElementsByTagName('head')[0].appendChild(meta);
+        }
         var customer_account_id = document.body.getAttribute('data-id');
         var product_offer_id = document.body.getAttribute('data-product-offer-id');
         var campaign = document.head.getElementsByTagName('title')[0].text;
