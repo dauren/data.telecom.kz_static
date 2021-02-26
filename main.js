@@ -37,7 +37,11 @@ document.onreadystatechange = function () {
                     "campaign": campaign
             }
         }
-        ym(68971321,'reachGoal','banner_loaded');
+        var yaParams = {
+            'advert_name': campaign,
+            'product_offer_id': product_offer_id,
+        }
+        ym(68971321,'reachGoal','banner_loaded', yaParams);
         postAppMessage(JSON.stringify(loaded_message), "*");
         var imgs = document.querySelectorAll("img")
         for (i = 0; i < imgs.length; i++) {
@@ -53,8 +57,12 @@ document.onreadystatechange = function () {
                         "campaign": campaign
                     }
             }
+            var cparams = {
+                'advert_name': campaign,
+                'product_offer_id': product_offer_id,
+            }
             postAppMessage(JSON.stringify(clicked_message), "*");
-            ym(68971321,'reachGoal','banner_clicked');
+            ym(68971321,'reachGoal','banner_clicked', cparams);
           });
         }
     }
