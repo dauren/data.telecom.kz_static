@@ -41,6 +41,7 @@ document.onreadystatechange = function () {
             'advert_name': campaign,
             'product_offer_id': product_offer_id,
         }
+        ym(68971321,'params', yaParams);
         ym(68971321,'reachGoal','banner_loaded', yaParams);
         postAppMessage(JSON.stringify(loaded_message), "*");
         var imgs = document.querySelectorAll("img")
