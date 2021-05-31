@@ -9,6 +9,7 @@ function postAppMessage(msg, origin) {
 document.onreadystatechange = function () {
     if (document.readyState == "interactive") {
 		loaded_message = {
+            "banner_type": "ORDER",
 			"event": "loaded",
 			"customer_account_id": -1,
 			"product_offer_ids": [],
